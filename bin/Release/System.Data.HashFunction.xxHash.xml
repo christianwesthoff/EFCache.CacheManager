@@ -1,0 +1,147 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>System.Data.HashFunction.xxHash</name>
+    </assembly>
+    <members>
+        <member name="T:System.Data.HashFunction.xxHash.IxxHash">
+            <summary>
+            Implements xxHash as specified at https://github.com/Cyan4973/xxHash/blob/dev/xxhash.c and 
+              https://github.com/Cyan4973/xxHash.
+            </summary>
+        </member>
+        <member name="P:System.Data.HashFunction.xxHash.IxxHash.Config">
+            <summary>
+            Configuration used when creating this instance.
+            </summary>
+            <value>
+            A clone of configuration that was used when creating this instance.
+            </value>
+        </member>
+        <member name="T:System.Data.HashFunction.xxHash.IxxHashConfig">
+            <summary>
+            Defines a configuration for a <see cref="T:System.Data.HashFunction.xxHash.IxxHash"/> implementation.
+            </summary>
+        </member>
+        <member name="P:System.Data.HashFunction.xxHash.IxxHashConfig.HashSizeInBits">
+            <summary>
+            Gets the desired hash size, in bits.
+            </summary>
+            <value>
+            The desired hash size, in bits.
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.xxHash.IxxHashConfig.Seed">
+            <summary>
+            Gets the seed.
+            </summary>
+            <value>
+            The seed.
+            </value>
+        </member>
+        <member name="M:System.Data.HashFunction.xxHash.IxxHashConfig.Clone">
+            <summary>
+            Makes a deep clone of current instance.
+            </summary>
+            <returns>A deep clone of the current instance.</returns>
+        </member>
+        <member name="T:System.Data.HashFunction.xxHash.IxxHashFactory">
+            <summary>
+            Provides instances of implementations of <see cref="T:System.Data.HashFunction.xxHash.IxxHash"/>.
+            </summary>
+        </member>
+        <member name="M:System.Data.HashFunction.xxHash.IxxHashFactory.Create">
+            <summary>
+            Creates a new <see cref="T:System.Data.HashFunction.xxHash.IxxHash"/> instance with the default configuration.
+            </summary>
+            <returns>A <see cref="T:System.Data.HashFunction.xxHash.IxxHash"/> instance.</returns>
+        </member>
+        <member name="M:System.Data.HashFunction.xxHash.IxxHashFactory.Create(System.Data.HashFunction.xxHash.IxxHashConfig)">
+            <summary>
+            Creates a new <see cref="T:System.Data.HashFunction.xxHash.IxxHash"/> instance with the specified configuration.
+            </summary>
+            <param name="config">Configuration to use when constructing the instance.</param>
+            <returns>A <see cref="T:System.Data.HashFunction.xxHash.IxxHash"/> instance.</returns>
+        </member>
+        <member name="T:System.Data.HashFunction.xxHash.xxHashConfig">
+            <summary>
+            Defines a configuration for a <see cref="T:System.Data.HashFunction.xxHash.IxxHash"/> implementation.
+            </summary>
+        </member>
+        <member name="P:System.Data.HashFunction.xxHash.xxHashConfig.HashSizeInBits">
+            <summary>
+            Gets the desired hash size, in bits.
+            </summary>
+            <value>
+            The desired hash size, in bits.
+            </value>
+        </member>
+        <member name="P:System.Data.HashFunction.xxHash.xxHashConfig.Seed">
+            <summary>
+            Gets the seed.
+            </summary>
+            <value>
+            The seed.
+            </value>
+        </member>
+        <member name="M:System.Data.HashFunction.xxHash.xxHashConfig.Clone">
+            <summary>
+            Makes a deep clone of current instance.
+            </summary>
+            <returns>A deep clone of the current instance.</returns>
+        </member>
+        <member name="T:System.Data.HashFunction.xxHash.xxHashFactory">
+            <summary>
+            Provides instances of implementations of <see cref="T:System.Data.HashFunction.xxHash.IxxHash"/>.
+            </summary>
+        </member>
+        <member name="P:System.Data.HashFunction.xxHash.xxHashFactory.Instance">
+            <summary>
+            Gets the singleton instance of this factory.
+            </summary>
+        </member>
+        <member name="M:System.Data.HashFunction.xxHash.xxHashFactory.Create">
+            <summary>
+            Creates a new <see cref="T:System.Data.HashFunction.xxHash.IxxHash"/> instance with the default configuration.
+            </summary>
+            <returns>A <see cref="T:System.Data.HashFunction.xxHash.IxxHash"/> instance.</returns>
+        </member>
+        <member name="M:System.Data.HashFunction.xxHash.xxHashFactory.Create(System.Data.HashFunction.xxHash.IxxHashConfig)">
+            <summary>
+            Creates a new <see cref="T:System.Data.HashFunction.xxHash.IxxHash"/> instance with the specified configuration.
+            </summary>
+            <param name="config">Configuration to use when constructing the instance.</param>
+            <returns>A <see cref="T:System.Data.HashFunction.xxHash.IxxHash"/> instance.</returns>
+        </member>
+        <member name="T:System.Data.HashFunction.xxHash.xxHash_Implementation">
+            <summary>
+            Implements xxHash as specified at https://github.com/Cyan4973/xxHash/blob/dev/xxhash.c and 
+              https://github.com/Cyan4973/xxHash.
+            </summary>
+        </member>
+        <member name="P:System.Data.HashFunction.xxHash.xxHash_Implementation.Config">
+            <summary>
+            Configuration used when creating this instance.
+            </summary>
+            <value>
+            A clone of configuration that was used when creating this instance.
+            </value>
+        </member>
+        <member name="M:System.Data.HashFunction.xxHash.xxHash_Implementation.#ctor(System.Data.HashFunction.xxHash.IxxHashConfig)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Data.HashFunction.xxHash.xxHash_Implementation" /> class.
+            </summary>
+            <param name="config">The configuration to use for this instance.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="config"/></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="config"/>.<see cref="P:System.Data.HashFunction.xxHash.IxxHashConfig.HashSizeInBits"/>;<paramref name="config"/>.<see cref="P:System.Data.HashFunction.xxHash.IxxHashConfig.HashSizeInBits"/> must be contained within xxHash.ValidHashSizes</exception>
+        </member>
+        <member name="M:System.Data.HashFunction.xxHash.xxHash_Implementation.ComputeHashInternal(System.Data.HashFunction.Core.Utilities.UnifiedData.IUnifiedData,System.Threading.CancellationToken)">
+            <exception cref="T:System.InvalidOperationException">HashSize set to an invalid value.</exception>
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.HashFunction.xxHash.xxHash_Implementation.ComputeHashAsyncInternal(System.Data.HashFunction.Core.Utilities.UnifiedData.IUnifiedDataAsync,System.Threading.CancellationToken)">
+            <exception cref="T:System.InvalidOperationException">HashSize set to an invalid value.</exception>
+            <inheritdoc />
+        </member>
+    </members>
+</doc>
