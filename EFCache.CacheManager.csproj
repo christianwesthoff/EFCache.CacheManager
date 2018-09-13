@@ -64,7 +64,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EfCacheManager.cs" />
+    <Compile Include="EfCacheCacheManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RedisCacheResilentMiddleware.cs" />
     <Compile Include="UseCacheManager.cs" />
